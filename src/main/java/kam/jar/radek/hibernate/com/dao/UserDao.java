@@ -1,5 +1,11 @@
 package kam.jar.radek.hibernate.com.dao;
 
-public class UserDao {
+import javax.persistence.EntityManagerFactory;
 
+public class UserDao {
+	
+	
+	private static EntityManagerFactory entityManagerFactory;
+	
+	
 }
