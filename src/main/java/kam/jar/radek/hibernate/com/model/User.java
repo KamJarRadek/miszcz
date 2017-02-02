@@ -9,11 +9,15 @@ import javax.persistence.Table;
 @Table(name = "user_secondteble")
 public class User {
 	@Id
-	@Column (name = "id")
+	@Column (name = "USER_ID")
 	private int userId;
+	@Column (name = "USER_NAME")
 	private String name;
+	@Column (name = "SURNAME")
 	private String surname;
+	@Column (name = "ADDRESS")
 	private String address;
+	@Column(name = "PHONE_NO")
 	private String phone;
 	
 	public User() {
