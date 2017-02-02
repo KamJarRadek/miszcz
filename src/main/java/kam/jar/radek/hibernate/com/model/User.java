@@ -11,13 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 import org.hibernate.engine.internal.Cascade;
 
 import kam.jar.radek.hibernate.com.Job;
 
 
-//@XmlRootElement
 @Entity
 @Table(name = "user_secondteble")
 public class User {
