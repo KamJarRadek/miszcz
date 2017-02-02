@@ -1,15 +1,29 @@
 package kam.jar.radek.hibernate.com.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import org.hibernate.engine.internal.Cascade;
 
+import kam.jar.radek.hibernate.com.Job;
+
+
+//@XmlRootElement
 @Entity
 @Table(name = "user_secondteble")
 public class User {
 	@Id
 	@Column (name = "USER_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 	@Column (name = "USER_NAME")
 	private String name;
@@ -19,7 +33,28 @@ public class User {
 	private String address;
 	@Column(name = "PHONE_NO")
 	private String phone;
+	@OneToMany(mappedBy = "u", cascade = CascadeType.ALL)
+	private List<Car> cars = new ArrayList<Car>();
+	public List<Job> getJobs() {
+		return jobs;
+	}
+
+	public void setJobs(List<Job> jobs) {
+		this.jobs = jobs;
+	}
+
+	@OneToMany(mappedBy = "us", cascade = CascadeType.ALL)
+	private List<Job> jobs = new ArrayList<Job>();
 	
+	
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
+
 	public User() {
 	}
 
