@@ -12,30 +12,30 @@ public class UserDao implements CRUD<User>{
 	private static EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
 
-	public void create(int id) {
+	public void create(User u) {
+		entityManagerFactory =  Persistence
+		         .createEntityManagerFactory("jpa-example");
 		 entityManager = entityManagerFactory.createEntityManager();
-		 Persistence
-         .createEntityManagerFactory("jpa-example");
+		
 		 System.out.println(entityManager);
 		    entityManager.getTransaction().begin();
-		    entityManager.persist();
+		    entityManager.persist(u);
 		    entityManager.getTransaction().commit();
 
 	}
 
 	public User read(int id) {
 		entityManager = entityManagerFactory.createEntityManager();
-	    entityManager.getTransaction().begin();
-	    entityManager.persist(u);
-	    entityManager.getTransaction().commit();
+	    
 
-		return null;
+		return entityManager.find(User.class, id);
 	}
 
 	public void update(int id) {
 		entityManager = entityManagerFactory.createEntityManager();
 	    entityManager.getTransaction().begin();
-	    entityManager.merge(u);
+	    User read = read(id);
+	    entityManager.merge(read);
 	    entityManager.getTransaction().commit();
 		
 	}
@@ -43,9 +43,11 @@ public class UserDao implements CRUD<User>{
 	public void delete(int id) {
 		entityManager = entityManagerFactory.createEntityManager();
 	    entityManager.getTransaction().begin();
-	    entityManager.remove(u);
+	    User read = read(id);
+	    entityManager.remove(read);
 	    entityManager.getTransaction().commit();
-		
+	    
+		   
 	}
 	
 	

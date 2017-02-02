@@ -1,13 +1,15 @@
 package kam.jar.radek.hibernate.com.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user_secondteble")
 public class User {
 	@Id
+	@Column (name = "id")
 	private int userId;
 	private String name;
 	private String surname;
